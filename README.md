@@ -1,2 +1,2 @@
-# RSA_for_CPU
+# RSA for CPU
 RSA encryption/decryption using GMP on CPU

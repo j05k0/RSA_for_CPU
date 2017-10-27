@@ -1,0 +1,1 @@
+gcc -o rsa -I C:\msys\1.0\home\Jozef\gmp_install\include -L C:\msys\1.0\home\Jozef\gmp_install\lib rsa.c -lgmp

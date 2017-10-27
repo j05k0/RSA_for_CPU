@@ -1,0 +1,7 @@
+﻿  rsa.c
+c:\msys\1.0\home\jozef\gmp_install\include\gmp.h(2223): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+d:\git\visual_studio\rsa_for_cpu\rsa_for_cpu\rsa.c(36): warning C4013: 'srand' undefined; assuming extern returning int
+d:\git\visual_studio\rsa_for_cpu\rsa_for_cpu\rsa.c(36): warning C4013: 'time' undefined; assuming extern returning int
+d:\git\visual_studio\rsa_for_cpu\rsa_for_cpu\rsa.c(48): warning C4013: 'rand' undefined; assuming extern returning int
+d:\git\visual_studio\rsa_for_cpu\rsa_for_cpu\rsa.c(122): warning C4101: 'i': unreferenced local variable
+C:\msys\1.0\home\Jozef\gmp_install\lib\libgmp.la : fatal error LNK1107: invalid or corrupt file: cannot read at 0x35E

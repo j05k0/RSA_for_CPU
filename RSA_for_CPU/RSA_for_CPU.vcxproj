@@ -123,6 +123,7 @@
     <ClCompile Include="rsa.c" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="cipher.txt" />
     <Text Include="input.txt" />
     <Text Include="input1.txt" />
     <Text Include="primes.txt" />

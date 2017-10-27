@@ -29,6 +29,9 @@
     <Text Include="input1.txt">
       <Filter>Source Files</Filter>
     </Text>
+    <Text Include="cipher.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">

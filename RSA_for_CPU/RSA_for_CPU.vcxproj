@@ -126,6 +126,7 @@
     <Text Include="cipher.txt" />
     <Text Include="input.txt" />
     <Text Include="input1.txt" />
+    <Text Include="output.txt" />
     <Text Include="primes.txt" />
   </ItemGroup>
   <ItemGroup>

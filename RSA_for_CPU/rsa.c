@@ -190,7 +190,7 @@ int main() {
 	char *message;
 	long long *numBlocks;
 	numBlocks = malloc(sizeof(long long));
-	message = inputString(BLOCK_SIZE, numBlocks, "input1.txt");
+	message = inputString(BLOCK_SIZE, numBlocks, "input.txt");
 	if (message == NULL) {
 		printf("Message read failed!\n");
 		return 1;
@@ -203,28 +203,34 @@ int main() {
 		printf("original is [%s]\n", mpz_get_str(NULL, 16, M));
 		block_encrypt(C, M, kp);
 		printf("encrypted is [%s]\n\n", mpz_get_str(NULL, 16, C));
-		fprintf(cipher, mpz_get_str(NULL, 16, C));
-		//fprintf(cipher, " ");
+		mpz_out_str(cipher, 16, C);
+		fprintf(cipher, " ");
 	}
 	fclose(cipher);
-	char *ciphermsg;
-	ciphermsg = inputString(BLOCK_SIZE * 2, numBlocks, "cipher.txt");
-	(*numBlocks)--;
-	printf("%d\n", *numBlocks);
-	//in progress....
-	for (i = 0; i < *numBlocks; i++) {
-		mpz_import(M, BLOCK_SIZE, 1, sizeof(char), 0, 0, message + i * BLOCK_SIZE);
-		printf("original is [%s]\n", mpz_get_str(NULL, 16, M));
-		block_encrypt(C, M, kp);
-		printf("encrypted is [%s]\n\n", mpz_get_str(NULL, 16, C));
-		fprintf(cipher, mpz_get_str(NULL, 16, C));
+
+	
+	char *result, *temp;
+	int blockidx = 1;
+	result = malloc(sizeof(char) * BLOCK_SIZE);
+	cipher = fopen("cipher.txt", "r");
+	while (mpz_inp_str(C, cipher, 16) > 0) {
+		temp = realloc(result, sizeof(char) * BLOCK_SIZE * blockidx);
+		if (temp)
+			result = temp;
+		else {
+			printf("Message reallocation failed!\n");
+			return 1;
+		}
+		printf("encrypted is [%s]\n", mpz_get_str(NULL, 16, C));
+		block_decrypt(DC, C, ku);
+		printf("decrypted is [%s]\n\n", mpz_get_str(NULL, 16, DC));
+		mpz_export(result + BLOCK_SIZE * (blockidx++ - 1), NULL, 1, sizeof(char), 0, 0, DC);
 	}
-	/*block_decrypt(DC, C, ku);
-	printf("decrypted is [%s]\n", mpz_get_str(NULL, 16, DC));
-	char result[BLOCK_SIZE + 1];
-	int length;
-	mpz_export(result, &length, 1, sizeof(char), 0, 0, DC);*/
-	
-	
+	fclose(cipher);
+	FILE *output;
+	output = fopen("output.txt", "w");
+	fprintf(output, "%s", result);
+	fclose(output);
+		
 	return 0;
 }

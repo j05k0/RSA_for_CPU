@@ -200,9 +200,9 @@ int main() {
 	cipher = fopen("cipher.txt", "w");
 	for (i = 0; i < *numBlocks; i++) {
 		mpz_import(M, BLOCK_SIZE, 1, sizeof(char), 0, 0, message + i * BLOCK_SIZE);
-		printf("original is [%s]\n", mpz_get_str(NULL, 16, M));
+		//printf("original is [%s]\n", mpz_get_str(NULL, 16, M));
 		block_encrypt(C, M, kp);
-		printf("encrypted is [%s]\n\n", mpz_get_str(NULL, 16, C));
+		//printf("encrypted is [%s]\n\n", mpz_get_str(NULL, 16, C));
 		mpz_out_str(cipher, 16, C);
 		fprintf(cipher, " ");
 	}
@@ -221,9 +221,9 @@ int main() {
 			printf("Message reallocation failed!\n");
 			return 1;
 		}
-		printf("encrypted is [%s]\n", mpz_get_str(NULL, 16, C));
+		//printf("encrypted is [%s]\n", mpz_get_str(NULL, 16, C));
 		block_decrypt(DC, C, ku);
-		printf("decrypted is [%s]\n\n", mpz_get_str(NULL, 16, DC));
+		//printf("decrypted is [%s]\n\n", mpz_get_str(NULL, 16, DC));
 		mpz_export(result + BLOCK_SIZE * (blockidx++ - 1), NULL, 1, sizeof(char), 0, 0, DC);
 	}
 	fclose(cipher);
